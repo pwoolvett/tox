@@ -575,6 +575,8 @@ def tox_testenv_create(venv, action):
         args.append("--system-site-packages")
     if venv.envconfig.alwayscopy:
         args.append("--always-copy")
+    # add prompt name
+    args.extend(["--prompt", f'({venv.name}) '])
     # add interpreter explicitly, to prevent using default (virtualenv.ini)
     args.extend(["--python", str(config_interpreter)])
     venv.session.make_emptydir(venv.path)
